@@ -393,6 +393,8 @@
 	self.__secKey = [self.class secKeyFromTag: self.tag];
 	let dict = ((__bridge NSDictionary *)SecKeyCopyAttributes(self.__secKey));
 	self.size = [dict[(__bridge id)kSecAttrKeySizeInBits] longValue];
+	self.isPublic = [dict[(__bridge id)kSecAttrKeyClassPublic] boolValue];
+	self.isPrivate = [dict[(__bridge id)kSecAttrKeyClassPrivate] boolValue];
 
 	if (self.__secKey)
 	{
